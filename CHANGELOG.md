@@ -6,6 +6,15 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.1.0] - 2026-07-18
+
+### Añadido
+- **Servidor MCP:** Creación de [server.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/server.ts) que inicializa y configura el servidor MCP (`McpServer`) para conectarse mediante `StdioServerTransport`.
+- **Esquemas de Validación:** Creación de [schemas/index.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/schemas/index.ts) con esquemas de validación Zod para herramientas de GitHub (listar y crear repositorios, listar y crear issues, y realizar commits).
+
+### Modificado
+- **Cliente GitHub:** Mejora en [client.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/github/client.ts) corrigiendo un error ortográfico en el mensaje de error fatal y agregando comentarios sobre la validación del token.
+
 ## [1.0.0] - 2026-07-14
 
 ### Añadido

@@ -4,10 +4,11 @@ Este proyecto es un servidor/cliente basado en el **Model Context Protocol (MCP)
 
 ## 📋 Características actuales
 
+- **Servidor MCP:** Punto de entrada en [server.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/server.ts) que inicializa y conecta el servidor MCP utilizando `StdioServerTransport`.
+- **Esquemas de Validación Zod:** Definición en [schemas/index.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/schemas/index.ts) para validar de manera estricta los datos de entrada a las herramientas (listar/crear repositorios, listar/crear issues y realizar commits).
 - **Configuración de TypeScript:** Listo para compilar código moderno (`ES2022`, `NodeNext`).
-- **Integración con GitHub:** Cliente centralizado configurado con `@octokit/rest` y autenticación segura mediante variables de entorno.
+- **Integración con GitHub:** Cliente centralizado en [client.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/github/client.ts) configurado con `@octokit/rest` y autenticación segura.
 - **Soporte de Variables de Entorno:** Integración con `dotenv` para gestionar credenciales de manera segura.
-- **Validación de Datos:** Incluye `zod` para validación de esquemas y tipos en tiempo de ejecución.
 - **Infraestructura de Pruebas:** Configurado con `vitest` para ejecutar pruebas rápidas e interactivas.
 
 ---
@@ -28,8 +29,11 @@ Este proyecto es un servidor/cliente basado en el **Model Context Protocol (MCP)
 ```text
 Proyecto-M5-MCP/
 ├── src/
-│   └── github/
-│       └── client.ts      # Inicialización del cliente Octokit de GitHub
+│   ├── github/
+│   │   └── client.ts      # Inicialización del cliente Octokit de GitHub
+│   ├── schemas/
+│   │   └── index.ts       # Esquemas de validación Zod para las herramientas
+│   └── server.ts          # Servidor principal MCP y punto de entrada
 ├── tsconfig.json          # Configuración del compilador de TypeScript
 ├── package.json           # Dependencias y scripts de npm
 └── .env.example           # Plantilla para variables de entorno (A crear)
@@ -76,6 +80,6 @@ Proyecto-M5-MCP/
 
 ## 🔮 Próximos Pasos sugeridos
 
-1. Implementar los esquemas de herramientas (Tools) de MCP para GitHub (ej. buscar repositorios, listar issues, crear pull requests).
-2. Crear el punto de entrada del servidor MCP (`src/index.ts`) para inicializar el transporte y registrar las herramientas.
-3. Crear pruebas unitarias con `vitest` en `src/github/client.test.ts` para verificar la conexión con GitHub.
+1. Registrar las herramientas (Tools) en el servidor MCP ([server.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/server.ts)), vinculando los esquemas de [schemas/index.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/schemas/index.ts) con las respectivas llamadas a la API de GitHub en [client.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/github/client.ts).
+2. Desarrollar pruebas unitarias con `vitest` para comprobar el correcto flujo de llamadas a la API y el comportamiento del servidor MCP.
+3. Integrar y configurar el servidor local en un cliente MCP (por ejemplo, Claude Desktop) para realizar pruebas reales de extremo a extremo.

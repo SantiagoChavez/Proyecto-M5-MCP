@@ -5,8 +5,9 @@ dotenv.config();
 
 const token = process.env.GITHUB_TOKEN;
 
+//Validación de Token
 if (!token) {
-    console.error("[FATAL] GITHUB_TOKEN no etsá definido en las variables de entorno");
+    console.error("[FATAL] GITHUB_TOKEN no está definido en las variables de entorno");
     process.exit(1);
 }
 
