@@ -6,6 +6,14 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.2.0] - 2026-07-19
+
+### Añadido
+- **Registro de Herramientas (Tools):** Implementación e integración en [server.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/server.ts) de las 5 herramientas MCP: `list-repositories`, `create-repository`, `create-issue`, `list-issues` y `create-commit` usando validación Zod y Octokit.
+- **Suite de Pruebas Unitarias:** Creación de [tests/github.test.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/tests/github.test.ts) con Vitest para validar esquemas Zod, flujos de éxito y simular respuestas de error HTTP (401, 403, 404, 422).
+- **Scripts de NPM:** Configuración de scripts `"build"`, `"dev"` y `"test"` en `package.json` para facilitar compilación, arranque local y pruebas.
+- **Documentación de Proyecto:** Refactorización total de [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md) bajo la consigna de entrega de la Etapa 7, incluyendo diagrama de arquitectura Mermaid, pasos para token de GitHub, guía de integración en Antigravity, ejemplos detallados de prompts para cada herramienta y resolución de problemas comunes (troubleshooting).
+
 ## [1.1.0] - 2026-07-18
 
 ### Añadido
