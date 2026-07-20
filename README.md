@@ -139,6 +139,22 @@ Inserta la siguiente configuración en la sección `mcpServers` de tu archivo JS
 
 ---
 
+## ⚙️ Aislamiento del Canal Stdio (Garantía de Pureza JSON-RPC)
+
+El protocolo MCP por stdio requiere una comunicación JSON-RPC estrictamente limpia. Silenciamos el output inicial de dependencias como `dotenv` en [src/github/client.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/github/client.ts) para evitar que mensajes de texto plano ensucien el canal y generen errores de parsing como `invalid character 'â' looking for beginning of value`.
+
+A continuación, se incluye el bloque de código de TypeScript donde sobreescribimos y restauramos `console.log`:
+
+```typescript
+// Desactivamos temporalmente el console.log para que dotenv no imprima mensajes gráficos en stdio
+const originalLog = console.log;
+console.log = () => { };
+dotenv.config();
+console.log = originalLog; // Restablecemos console.log normalmente
+```
+
+---
+
 ## 📖 Referencia de Herramientas (Tools) y Prompts Efectivos
 
 El servidor registra las siguientes herramientas. A continuación se detallan sus parámetros, descripciones y ejemplos de prompts para interactuar de forma efectiva con el LLM:
@@ -190,6 +206,24 @@ El servidor registra las siguientes herramientas. A continuación se detallan su
 
 ---
 
+## 📸 Pruebas de Funcionamiento en Vivo
+
+A continuación se presentan las evidencias de ejecución en tiempo real del servidor MCP integrado con el agente de IA en el IDE:
+
+### 1. Consulta de Lectura (`list-repositories`)
+El LLM interpreta la intención del usuario en lenguaje natural (*'Listame mis repositorios recientes de GitHub'*) e invoca de manera autónoma la herramienta `list-repositories`, obteniendo la lista real de proyectos desde la API de GitHub:
+
+![Ejecución de list-repositories](assets/demo-list-repos.png)
+
+---
+
+### 2. Ejecución de Escritura (`create-issue`)
+El agente ejecuta la herramienta `create-issue` previa autorización de seguridad, creando el Issue **#1 ("Demo Defensa Henry")** en el repositorio. En la imagen se observa la respuesta del agente a la derecha y el issue en estado *Open* en la interfaz de GitHub a la izquierda:
+
+![Creación exitosa de Issue en GitHub](assets/demo-create-issue.png)
+
+---
+
 ## 🧪 Verificación y Pruebas
 
 Para garantizar que el servidor funciona correctamente, puedes ejecutar los siguientes procesos de verificación:
@@ -220,6 +254,7 @@ Aquí tienes una lista de los errores más comunes y cómo solucionarlos:
 
 | Error / Síntoma | Causa Común | Solución |
 | :--- | :--- | :--- |
+| **calling "initialize": invalid character 'â' looking for beginning of value** | Salida de consola no estructurada (logs de dotenv o console.log directos) ensuciando el canal de comunicación stdio antes de la handshake JSON-RPC. | Silenciar cualquier output en stdout durante la carga inicial de variables de entorno en [src/github/client.ts](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/src/github/client.ts) y no incluir console.log planos al arrancar el servidor. |
 | **Error 401 (Unauthorized)** | El `GITHUB_TOKEN` es incorrecto, ha expirado o no está configurado en el archivo `.env` o la configuración del cliente. | Genera un nuevo token classic clásico en GitHub con el scope `repo`, actualiza tu archivo `.env` o reinicia el cliente MCP para que recargue las variables de entorno. |
 | **Error 404 (Not Found)** | El repositorio especificado no existe, el nombre del propietario (`owner`) o repositorio (`repo`) tiene un error de ortografía, o el token no tiene permisos para acceder a repositorios privados. | Verifica detalladamente la ortografía del dueño y repositorio. Si el repositorio es privado, asegúrate de que tu Token de GitHub tenga los permisos necesarios en repositorios privados. |
 | **Error 403 (Rate Limit Exceeded)** | Se ha superado el límite de llamadas a la API de GitHub permitido por tu token. | Espera a que se reinicie el límite (generalmente una hora) o genera un token nuevo en una cuenta diferente si es para desarrollo activo. |

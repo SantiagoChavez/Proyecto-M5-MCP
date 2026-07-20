@@ -19,7 +19,7 @@ server.tool(
     ListRepositoriesSchema.shape,                  // El molde de Zod (¡Acá es donde se usa!)
     async () => {                            // La función ejecutora (callback)
         try {
-            console.error("[INFO] La IA solicitó listar los repositorios de GitHub...");
+            console.error("[INFO] La IA solicito listar los repositorios de GitHub...");
 
             // Llamamos a Octokit para traer los repositorios del usuario autenticado
             const response = await octokit.rest.repos.listForAuthenticatedUser({
@@ -46,7 +46,7 @@ server.tool(
                 ],
             };
         } catch (error: any) {
-            console.error("[ERROR] Falló la comunicación con la API de GitHub:", error);
+            console.error("[ERROR] Fallo la comunicacion con la API de GitHub:", error);
             return {
                 content: [
                     {
@@ -69,7 +69,7 @@ server.tool(
             //Desectructuramos los parámetros que vienen del LLM clasificados por el molde
             const { name, description } = args;
 
-            console.error(`[INFO] La IA solicitó crear el repositorio: "${name}"...`);
+            console.error(`[INFO] La IA solicito crear el repositorio: "${name}"...`);
 
             //Llamamos a Octokit para crear el repositorio en la cuenta del usuario autenticado
             const response = await octokit.rest.repos.createForAuthenticatedUser({
@@ -88,7 +88,7 @@ server.tool(
                 ],
             };
         } catch (error: any) {
-            console.error("[ERROR] Falló la creación del repositorio en GitHub:", error);
+            console.error("[ERROR] Fallo la creacion del repositorio en GitHub:", error);
 
 
             //Transformación de error técnico a lenguaje natural
@@ -120,7 +120,7 @@ server.tool(
             //Desestructuramos los parámetros obligatorios que nos pasa el LLM
             const { owner, repo, title, body } = args;
 
-            console.error(`[INFO] La IA solicitó crear un nuevo issue en "${owner}/${repo}" con el título: "${title}"`);
+            console.error(`[INFO] La IA solicito crear un nuevo issue en "${owner}/${repo}" con el titulo: "${title}"`);
             // Llamamos a Octokit para impactar el issue en la API de GitHub
             const response = await octokit.rest.issues.create({
                 owner,
@@ -138,7 +138,7 @@ server.tool(
                 ],
             };
         } catch (error: any) {
-            console.error("[ERROR] Falló la creación del issue en GitHub:", error);
+            console.error("[ERROR] Fallo la creacion del issue en GitHub:", error);
 
             let mensajeAmigable = `Error al crear el issue: ${error.message || error}`;
 
@@ -167,7 +167,7 @@ server.tool(
         try {
             const { owner, repo } = args;
 
-            console.error(`[INFO]  La IA solicitó listar los  issues abiertos de "${owner}/${repo}"...`);
+            console.error(`[INFO]  La IA solicito listar los  issues abiertos de "${owner}/${repo}"...`);
 
             //Llamamos a Octokit para mandar solo la información limpia y útil al LLM
             const response = await octokit.rest.issues.listForRepo({
@@ -195,7 +195,7 @@ server.tool(
             };
 
         } catch (error: any) {
-            console.error("[ERROR] Falló la lectura de issues en Github:", error);
+            console.error("[ERROR] Fallo la lectura de issues en Github:", error);
 
             let mensajeAmigable = `Error al listar los issues: ${error.message || error}`;
 
@@ -225,7 +225,7 @@ server.tool(
         try {
             const { owner, repo, path, message, content, branch } = args;
 
-            console.error(`[INFO] La IA solicitó crear un commit en "${owner}/${repo}" para el archivo "${path}"...`);
+            console.error(`[INFO] La IA solicito crear un commit en "${owner}/${repo}" para el archivo "${path}"...`);
 
             // 1. Intentamos obtener el archivo por si ya existe (necesitamos su SHA para actualizarlo)
             let sha: string | undefined = undefined;
@@ -264,7 +264,7 @@ server.tool(
                 ],
             };
         } catch (error: any) {
-            console.error("[ERROR] Falló la creación del commit en GitHub:", error);
+            console.error("[ERROR] Fallo la creacion del commit en GitHub:", error);
 
             let mensajeAmigable = `Error al realizar el commit: ${error.message || error}`;
 
@@ -293,7 +293,7 @@ async function main() {
 }
 
 main().catch((error) => {
-    console.error("[FATAL] Error crítico al iniciar el servidor MCP de GitHub:", error);
+    console.error("[FATAL] Error critico al iniciar el servidor MCP de GitHub:", error);
     process.exit(1);
 });
 

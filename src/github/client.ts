@@ -1,7 +1,11 @@
 import { Octokit } from "@octokit/rest";
 import dotenv from "dotenv";
 
+// Desactivamos temporalmente el console.log para que dotenv no imprima mensajes gráficos en stdio
+const originalLog = console.log;
+console.log = () => { };
 dotenv.config();
+console.log = originalLog; // Restablecemos console.log normalmente
 
 const token = process.env.GITHUB_TOKEN;
 
