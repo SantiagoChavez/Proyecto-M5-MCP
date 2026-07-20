@@ -289,11 +289,7 @@ server.tool(
 async function main() {
     const transport = new StdioServerTransport();
 
-    console.error("[INFO] Conectando el servidor MCP de GitHub a través de stdio... ");
-
     await server.connect(transport);
-
-    console.error("[SUCCESS] Servidor MCP de GitHub corriendo y conectado.");
 }
 
 main().catch((error) => {
