@@ -273,3 +273,8 @@ Aquí tienes una lista de los errores más comunes y cómo solucionarlos:
 | **Error 403 (Rate Limit Exceeded)** | Se ha superado el límite de llamadas a la API de GitHub permitido por tu token. | Espera a que se reinicie el límite (generalmente una hora) o genera un token nuevo en una cuenta diferente si es para desarrollo activo. |
 | **Error 422 (Validation Failed)** | Estás intentando crear un repositorio con un nombre que ya existe en tu cuenta de GitHub. | Ejecuta la acción utilizando un nombre diferente y que esté libre. |
 | **El servidor no inicia en Antigravity / Claude Desktop** | La ruta al archivo `dist/server.js` en tu archivo de configuración JSON es incorrecta o contiene espacios sin escapar adecuadamente. | En sistemas Windows, escribe las rutas con barras diagonales `/` (ej. `c:/Ruta/Al/Proyecto/dist/server.js`) y asegúrate de haber ejecutado `npm run build` para generar el directorio `dist`. |
+
+---
+
+> [!NOTE]
+> **Registro de Prueba:** Este documento fue modificado de forma remota y su commit fue realizado de manera autónoma utilizando la herramienta `create-commit` del propio servidor MCP desarrollado en este proyecto.
