@@ -9,8 +9,11 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 ## [1.2.1] - 2026-07-20
 
 ### Modificado
-- **README.md:** Añadida sección explicativa de Pureza JSON-RPC y Aislamiento del Canal Stdio en [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md).
-- **Resolución de problemas:** Incorporada fila a la tabla de Troubleshooting en [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md) cubriendo el error de inicialización `invalid character 'â' looking for beginning of value`.
+- **README.md:** 
+  - Añadida sección explicativa de Pureza JSON-RPC y Aislamiento del Canal Stdio en [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md).
+  - Incorporada fila a la tabla de Troubleshooting en [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md) cubriendo el error de inicialización `invalid character 'â' looking for beginning of value`.
+  - Agregados badges profesionales al encabezado principal de [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md).
+  - Incorporada subsección y tabla informativa sobre las variables de entorno (`GITHUB_TOKEN` y `NODE_ENV`) en la sección de configuración de [README.md](file:///c:/Users/Santiago/Proyectos%20integradores/Proyecto-M5-MCP/README.md).
 
 ## [1.2.0] - 2026-07-19
 

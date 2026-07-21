@@ -217,7 +217,6 @@ server.tool(
 );
 
 // REGISTRO DE LA TOOL: Le enseñamos al servidor a realizar commits en un archivo
-// REGISTRO DE LA TOOL: Le enseñamos al servidor a realizar commits en un archivo
 server.tool(
     "create-commit",
     CreateCommitSchema.shape, // Usamos .shape para desempaquetar el molde de Zod

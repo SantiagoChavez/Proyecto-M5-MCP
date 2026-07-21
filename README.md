@@ -1,5 +1,11 @@
 # GitHub MCP Server 🚀
 
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![MCP Protocol](https://img.shields.io/badge/MCP-Model_Context_Protocol-purple?style=for-the-badge)
+![Octokit](https://img.shields.io/badge/Octokit-GitHub_API-black?style=for-the-badge&logo=github)
+![Vitest](https://img.shields.io/badge/Vitest-Test_Runner-FCC72B?style=for-the-badge&logo=vitest&logoColor=black)
+
 Este proyecto es un servidor basado en el **Model Context Protocol (MCP)** de Anthropic, integrado con la API de GitHub mediante **Octokit** y TypeScript. Permite que modelos de inteligencia artificial interactúen directamente con repositorios de GitHub (listar repositorios, crear repositorios, listar y crear issues, y realizar commits).
 
 ---
@@ -99,6 +105,13 @@ Crea un archivo `.env` en la raíz del proyecto basándote en la plantilla `.env
 ```env
 GITHUB_TOKEN=tu_token_generado_aqui
 ```
+
+#### Variables de Envío / Entorno:
+
+| Variable | Tipo | Requerido | Descripción |
+| :--- | :--- | :--- | :--- |
+| `GITHUB_TOKEN` | String | Sí | Personal Access Token (Classic) con permisos `repo` para interactuar con la API. |
+| `NODE_ENV` | String | No | Entorno de ejecución (`development` / `production`). |
 
 ### 3. Compilar el proyecto
 Antes de agregar el servidor a cualquier cliente MCP, debes compilar el código TypeScript a JavaScript ejecutable:
