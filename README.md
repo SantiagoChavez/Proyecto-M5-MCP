@@ -80,7 +80,7 @@ Proyecto-M5-MCP/
 ### 1. Clonar e Instalar dependencias
 Abre tu terminal y ejecuta los siguientes comandos:
 ```bash
-git clone <url-del-repositorio>
+git clone <https://github.com/SantiagoChavez/Proyecto-M5-MCP.git>
 cd Proyecto-M5-MCP
 npm install
 ```
@@ -278,3 +278,6 @@ Aquí tienes una lista de los errores más comunes y cómo solucionarlos:
 
 > [!NOTE]
 > **Registro de Prueba:** Este documento fue modificado de forma remota y su commit fue realizado de manera autónoma utilizando la herramienta `create-commit` del propio servidor MCP desarrollado en este proyecto.
+> 
+> * **Problema de Sincronización:** Al realizar un commit directamente en el repositorio remoto usando la API de GitHub (a través del servidor MCP), el árbol de trabajo local queda desincronizado con respecto al origen. Esto genera un conflicto al intentar hacer `git pull` debido a cambios locales no guardados en el archivo modificado.
+> * **Solución:** Para solucionar esta desincronización, se debe descartar el archivo modificado localmente usando `git restore README.md` (o haciendo un `git stash`) y luego ejecutar `git pull origin main` para traer el commit remoto limpio.
