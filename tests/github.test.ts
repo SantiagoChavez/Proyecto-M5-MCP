@@ -61,7 +61,7 @@ describe("Suite de test - MCP Server GitHub (Casos Borde e Integración)", () =>
 
             // Simulamos la llamada al handler
             const respuestaGitHub = await octokit.rest.repos.listForAuthenticatedUser();
-            expect(respuestaGitHub.data[0].name).toBe("proyecto-m5"); // Corregida la t intrusa
+            expect(respuestaGitHub.data[0].name).toBe("proyecto-m5"); // Corregida la t intrusa (error de tipeo viejo)
             expect(octokit.rest.repos.listForAuthenticatedUser).toHaveBeenCalledTimes(1);
         });
     });
@@ -73,6 +73,9 @@ describe("Suite de test - MCP Server GitHub (Casos Borde e Integración)", () =>
         it("4. Error 404: Debería simular el comportamiento cuando un repositorio no existe", async () => {
             const error404 = { status: 404, message: "Not Found" };
             (octokit.rest.issues.create as any).mockRejectedValue(error404);
+            /*mockRejectedValue le dice al simulador de Vitest: "la próxima vez que llamen a esta 
+             función de Octokit, hacé que falle y lance este error que acabo de definir", 
+             permitiéndote probar la reacción de tu catch sin tocar la API real.*/
 
             try {
                 await octokit.rest.issues.create({ owner: "Santy", repo: "inexistente", title: "Error" });
